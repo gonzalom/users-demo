@@ -30,5 +30,8 @@ monolog:
         #    type: chromephp
         #    level: info
 
-#swiftmailer:
+swiftmailer:
+    # https://mailtrap.io
+    auth_mode: cram-md5
+    port: 2525
 #    delivery_addresses: ['me@example.com']
