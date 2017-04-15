@@ -14,6 +14,7 @@ In this repository, the `users` table will have the following fields:
 - `inserted_on`
 - `last_updated`
 
+If you want to read more about why you may find interesting using a framework instead of flat PHP, you may find interesting the article [Symfony versus Flat PHP](http://symfony.com/doc/3.2/introduction/from_flat_php_to_symfony2.html).
 
 # Requirements
 
@@ -51,8 +52,57 @@ Security check
 php bin/console security:check
 ```
 
+# Configuration
 
-## Configure the database
+The environment configuration settings are allocated in `app/config/parameters.yml`.
+
+## Database configuration
+
+Example database settings for symfony server:
+
+```yaml
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: users-demo
+    database_user: homestead
+    database_password: secret
+```
+
+Example database settings for homestead server:
+
+```yaml
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: users-demo
+    database_user: root
+    database_password: secret
+```
+
+You can find more documentation about databases configuration in [Databases and the Doctrine ORM](http://symfony.com/doc/3.2/doctrine.html).
+
+## Email configuration
+
+Example email settings for [mailtrap](https://mailtrap.io/):
+
+```yaml
+parameters:
+    mailer_transport: smtp
+    mailer_host: smtp.mailtrap.io
+    mailer_user: # your mailtrap user
+    mailer_password: # your mailtrap password
+```
+
+If you use any other mail testing method, you may want to update the file `app/config/config_dev.yml`
+
+You can find more documentation about email configurations in [How to send an Email](http://symfony.com/doc/3.2/email.html).
+
+## Build
+
+In order to run our application we need to run some commands...
+
+# Database build
 
 Before creating the database, if you want to start from fresh, you can remove it:
 
@@ -66,6 +116,21 @@ To create the database:
 php bin/console doctrine:database:create
 ```
 
+Now we can update the schema of our database.
+
+To see what queries are going to be run:
+
+```bash
+php bin/console doctrine:schema:update --dump-sql
+```
+
+Then we can run them with:
+
+```bash
+php bin/console doctrine:schema:update --force
+```
+
+This schema is updated from the 
 
 # Server
 
@@ -79,20 +144,18 @@ More info in [Installing & Setting up the Symfony Framework](http://symfony.com/
 
 ## Homestead server
 
-You may also use homestead with the following configuration example:
+You may also use homestead with the following `homestead.yml` configuration example:
 
 ```yaml
-ip: "192.168.10.10"
-
-folders:
-    - map: ~/Code
-      to: /home/vagrant/Code
-      
 sites:
     - map: users-demo.app
       to: /home/vagrant/Code/Users-Demo/web
       type: symfony
-      
+```
+
+You don't need to create the database, as it will be created by the doctrine command that we will see later, but if you want to, you can do so as...
+
+```yaml
 databases:
     - users-demo
 ```
@@ -100,8 +163,10 @@ databases:
 And add this line to /etc/hosts (unix) or C:\Windows\System32\drivers\etc\hosts (Windows)
 
 ```text
-192.168.10.10 symfony-demo.dev
+192.168.10.10 users-demo.dev
 ```
+
+Note: This are the default global homestead configurations settings. Make sure you use the correct directory mappings and ip if you customized them.
 
 ## Nginx configuration
 
@@ -167,7 +232,3 @@ server {
 
 ```
 
-# Links
-
-- [Symfony](http://symfony.com/)
-- [Symfony versus Flat PHP](http://symfony.com/doc/current/introduction/from_flat_php_to_symfony2.html)
