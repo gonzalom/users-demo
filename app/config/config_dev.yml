@@ -35,3 +35,8 @@ swiftmailer:
     auth_mode: cram-md5
     port: 2525
 #    delivery_addresses: ['me@example.com']
+
+fos_user:
+    from_email:
+        address: no-reply@example.com
+        sender_name: Users Demo
