@@ -1,11 +1,11 @@
 {
-    "name": "gonzalomf/user-update-demo",
+    "name": "gonzalomf/users-demo",
     "license": "MIT",
     "type": "project",
     "homepage": "https://github.com/gonzalom",
     "support": {
-        "issues": "https://github.com/gonzalom/User-Update-Demo/issues",
-        "source": "https://github.com/gonzalom/User-Update-Demo"
+        "issues": "https://github.com/gonzalom/Users-Demo/issues",
+        "source": "https://github.com/gonzalom/Users-Demo"
     },
     "authors": [
         {
