@@ -2,8 +2,9 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -66,7 +67,7 @@ class User extends BaseUser
     /**
      * Row adding date in format ISO-8601 YYYY-MM-DDThh:mm:ss±hhmm
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(type="datetime", name="inserted_on", nullable=false)
      */
@@ -75,11 +76,19 @@ class User extends BaseUser
     /**
      * Row adding date in format ISO-8601 YYYY-MM-DDThh:mm:ss±hhmm
      *
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(type="datetime", name="last_updated", nullable=true)
      */
     protected $updatedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", name="version", options={"unsigned":true}, nullable=false)
+     * @ORM\Version
+     */
+    protected $version;
 
     /**
      * User constructor.
@@ -161,12 +170,20 @@ class User extends BaseUser
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
      * @ORM\PrePersist
      * @link http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/events.html#lifecycle-callbacks
      */
     public function beforePersist()
     {
-        $this->createdAt = new \DateTime(date('Y-m-d H:i:s'));
+        $this->createdAt = new DateTime();
     }
 
     /**
@@ -175,6 +192,6 @@ class User extends BaseUser
      */
     public function beforeUpdate()
     {
-        $this->updatedAt = new \DateTime(date('Y-m-d H:i:s'));
+        $this->updatedAt = new DateTime();
     }
 }
