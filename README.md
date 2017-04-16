@@ -33,12 +33,8 @@ More info in [Requirements for Running Symfony](http://symfony.com/doc/3.2/refer
 Clone the repository:
 
 ```bash
-git clone ...
+git clone git@github.com:gonzalom/users-demo.git
 ```
-
-Optionally, you can run the included homestead machine:
-
-// TODO
 
 Verify that the system is compatible
 
@@ -65,7 +61,7 @@ parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: users-demo
-    database_user: homestead
+    database_user: root
     database_password: secret
 ```
 
@@ -76,7 +72,7 @@ parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: users-demo
-    database_user: root
+    database_user: homestead
     database_password: secret
 ```
 
@@ -98,11 +94,8 @@ If you use any other mail testing method, you may want to update the file `app/c
 
 You can find more documentation about email configurations in [How to send an Email](http://symfony.com/doc/3.2/email.html).
 
-## Build
 
-In order to run our application we need to run some commands...
-
-# Database build
+## Database Schema
 
 Before creating the database, if you want to start from fresh, you can remove it:
 
@@ -149,7 +142,7 @@ You may also use homestead with the following `homestead.yml` configuration exam
 ```yaml
 sites:
     - map: users-demo.app
-      to: /home/vagrant/Code/Users-Demo/web
+      to: /home/vagrant/Code/users-demo/web
       type: symfony
 ```
 
@@ -177,7 +170,7 @@ server {
     listen 80;
     listen 443 ssl http2;
     server_name users-demo.app;
-    root "/home/vagrant/Code/Users-Demo/web";
+    root "/home/vagrant/Code/users-demo/web";
 
     index index.html index.htm index.php app_dev.php;
 
