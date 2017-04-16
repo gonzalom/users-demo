@@ -4,7 +4,7 @@ Users-Demo
 
 # About
 
-[Symfony 3.2](http://symfony.com/doc/3.1/index.html) application with [users bundle 2.0](http://symfony.com/doc/2.0/bundles/FOSUserBundle/index.html) and customized fields and templates.
+[Symfony 3.2](http://symfony.com/doc/3.1/index.html) application with [users bundle 2.0](http://symfony.com/doc/2.0/bundles/FOSUserBundle/index.html) and customized fields and templates using [Bootstrap 3.3.7](http://getbootstrap.com/).
 
 In this repository, the `users` table will have the following fields:
 - `id_user` (as the primary key, instead of `id`)

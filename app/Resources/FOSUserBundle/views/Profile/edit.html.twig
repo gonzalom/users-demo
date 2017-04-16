@@ -1,0 +1,7 @@
+{% extends "layouts/profile.html.twig" %}
+
+{% block fos_user_content %}
+    <div style="padding-top: 20px">
+        {% include "@FOSUser/Profile/edit_content.html.twig" %}
+    </div>
+{% endblock fos_user_content %}

@@ -2,6 +2,20 @@
 
 {#{% block title %}Demo Application{% endblock %}#}
 
-{% block content %}
-    {% block fos_user_content %}{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body { background: #F5F5F5; }
+    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+    #container { padding: 2em; }
+</style>
+{% endblock %}
+
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {% block fos_user_content %}{% endblock %}
+        </div>
+    </div>
 {% endblock %}

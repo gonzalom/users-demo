@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}Demo Application{% endblock %}#}
+
+{% block body %}
+<ul class="nav nav-tabs">
+    <li role="presentation" class="{% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}active{% endif %}"><a href="{{ path('fos_user_profile_show') }}" title="Profile">Profile</a></li>
+    <li role="presentation" class="{% if app.request.attributes.get('_route') == 'fos_user_profile_edit' %}active{% endif %}"><a href="{{ path('fos_user_profile_edit') }}" title="Edit">Edit</a></li>
+    <li role="presentation" class="{% if app.request.attributes.get('_route') == 'fos_user_change_password' %}active{% endif %}"><a href="{{ path('fos_user_change_password') }}" title="Password">Password</a></li>
+</ul>
+<div class="row">
+    <div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+        {% block fos_user_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

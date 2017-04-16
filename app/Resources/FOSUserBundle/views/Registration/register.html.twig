@@ -1,0 +1,9 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block navbar %}{#Remove navbar for this page#}{% endblock %}
+
+{% block fos_user_content %}
+    <h1>Create an account</h1>
+    <p>Already have an account? <a href="{{ path('fos_user_security_login') }}" title="Log in here">Log in here</a></p>
+    {% include "@FOSUser/Registration/register_content.html.twig" %}
+{% endblock fos_user_content %}
