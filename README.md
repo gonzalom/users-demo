@@ -133,7 +133,9 @@ We can start the default build in server from symfony:
 php bin/console server:run
 ```
 
-More info in [Installing & Setting up the Symfony Framework](http://symfony.com/doc/3.2/setup.html)
+More info in [Installing & Setting up the Symfony Framework](http://symfony.com/doc/3.2/setup.html).
+
+Or if you want to learn more about the built-in web server: [How to Use PHP's built-in Web Server](http://symfony.com/doc/current/setup/built_in_web_server.html).
 
 ## Homestead server
 
@@ -156,7 +158,7 @@ databases:
 And add this line to /etc/hosts (unix) or C:\Windows\System32\drivers\etc\hosts (Windows)
 
 ```text
-192.168.10.10 users-demo.dev
+192.168.10.10 users-demo.app
 ```
 
 Note: This are the default global homestead configurations settings. Make sure you use the correct directory mappings and ip if you customized them.
@@ -225,3 +227,8 @@ server {
 
 ```
 
+# What next...
+
+Now you can register in `/register` route:
+- For localhost:  [http://127.0.0.1:8000/register/](http://127.0.0.1:8000/register/)
+- For virtual machine: [http://users-demo.app/register/](http://users-demo.app/register/)
