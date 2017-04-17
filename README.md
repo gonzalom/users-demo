@@ -57,17 +57,19 @@ The environment configuration settings are allocated in `app/config/parameters.y
 Example database settings for symfony server:
 
 ```yaml
+# app/config/parameters.yml
 parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: users-demo
     database_user: root
-    database_password: secret
+    database_password: ~
 ```
 
 Example database settings for homestead server:
 
 ```yaml
+# app/config/parameters.yml
 parameters:
     database_host: 127.0.0.1
     database_port: null
@@ -83,6 +85,7 @@ You can find more documentation about databases configuration in [Databases and 
 Example email settings for [mailtrap](https://mailtrap.io/):
 
 ```yaml
+# app/config/parameters.yml
 parameters:
     mailer_transport: smtp
     mailer_host: smtp.mailtrap.io
@@ -123,14 +126,17 @@ Then we can run them with:
 php bin/console doctrine:schema:update --force
 ```
 
-This schema is updated from the 
 
 # Server
+
+Here are some examples of servers configurations...
+
+# Build-in Server
 
 We can start the default build in server from symfony:
 
 ```bash
-php bin/console server:run
+php bin/console server:start
 ```
 
 More info in [Installing & Setting up the Symfony Framework](http://symfony.com/doc/3.2/setup.html).
@@ -142,6 +148,7 @@ Or if you want to learn more about the built-in web server: [How to Use PHP's bu
 You may also use homestead with the following `homestead.yml` configuration example:
 
 ```yaml
+# homestead.yml
 sites:
     - map: users-demo.app
       to: /home/vagrant/Code/users-demo/web
@@ -151,6 +158,7 @@ sites:
 You don't need to create the database, as it will be created by the doctrine command that we will see later, but if you want to, you can do so as...
 
 ```yaml
+# homestead.yml
 databases:
     - users-demo
 ```
@@ -162,6 +170,26 @@ And add this line to /etc/hosts (unix) or C:\Windows\System32\drivers\etc\hosts 
 ```
 
 Note: This are the default global homestead configurations settings. Make sure you use the correct directory mappings and ip if you customized them.
+
+## Build-in & Homestead merge
+
+If you want to use both, the symfony build-in server and homestead, sharing services as the database, you can do so using homestead as the host:
+
+```yaml
+# app/config/parameters.yml
+parameters:
+    database_host: homestead
+    database_port: null
+    database_name: users-demo
+    database_user: homestead
+    database_password: secret
+```
+
+And adding it to your hosts file as:
+
+```text
+192.168.10.10 homestead
+```
 
 ## Nginx configuration
 
